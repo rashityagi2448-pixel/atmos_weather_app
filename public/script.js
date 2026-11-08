@@ -1,6 +1,5 @@
-// Paste a NEW WeatherAPI key here. Do not publish a real key in a public repository.
-const API_KEY = "PASTE_YOUR_WEATHERAPI_KEY_HERE";
-const API_URL = "https://api.weatherapi.com/v1/current.json";
+// Requests go through the Netlify Function at /api/weather, which keeps the API key server-side.
+const API_URL = "/api/weather";
 
 const form = document.getElementById("searchForm");
 const input = document.getElementById("locationInput");
@@ -79,18 +78,13 @@ async function getWeather(place) {
     input.focus();
     return;
   }
-  if (API_KEY === "PASTE_YOUR_WEATHERAPI_KEY_HERE") {
-    setStatus("Add your WeatherAPI key in script.js first.", "error");
-    return;
-  }
-
   button.disabled = true;
   button.innerHTML = "<span>Loading</span><span>…</span>";
   setStatus("Finding the weather for you…", "loading");
 
   try {
-    const url = new URL(API_URL);
-    url.search = new URLSearchParams({ key: API_KEY, q: query, aqi: "yes" }).toString();
+    const url = new URL(API_URL, window.location.origin);
+    url.search = new URLSearchParams({ q: query }).toString();
     const response = await fetch(url);
     const data = await response.json();
 
