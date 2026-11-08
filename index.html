@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10172d" />
+  <title>Atmos — Live Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Atmos home">
+        <span class="brand-mark">✦</span><span>atmos<span class="brand-dot">.</span></span>
+      </a>
+      <div class="top-note"><span class="live-dot"></span> LIVE WEATHER</div>
+      <div class="top-date" id="todayLabel">YOUR DAILY FORECAST</div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR WORLD, IN REAL TIME</p>
+      <h1>Feel the <span>forecast.</span></h1>
+      <p class="intro-copy">A little closer to the sky. Discover what's happening outside.</p>
+    </section>
+
+    <form class="search-bar" id="searchForm">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="locationInput" type="text" placeholder="Search city, town or postcode..." autocomplete="off" aria-label="Enter a location" />
+      <button id="searchButton" type="submit"><span>Explore</span><span aria-hidden="true">↗</span></button>
+    </form>
+    <div class="quick-cities">
+      <span>TRY:</span>
+      <button type="button" class="city-chip" data-city="New Delhi">New Delhi</button>
+      <button type="button" class="city-chip" data-city="Mumbai">Mumbai</button>
+      <button type="button" class="city-chip" data-city="London">London</button>
+      <button type="button" class="city-chip" data-city="Tokyo">Tokyo</button>
+    </div>
+
+    <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+    <section class="weather-layout" id="weatherPanel" aria-label="Current weather">
+      <article class="hero-card">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">CURRENT WEATHER</p>
+            <h2 id="cityName">London</h2>
+            <p class="location-meta" id="locationMeta">United Kingdom · Local time</p>
+          </div>
+          <div class="date-pill" id="localTime">--:--</div>
+        </div>
+        <div class="hero-main">
+          <div class="temperature-wrap">
+            <div class="temperature"><span id="temperature">--</span><sup>°</sup></div>
+            <p class="condition" id="conditionText">Waiting for the sky...</p>
+            <p class="feels-like">Feels like <strong id="feelsLike">--°</strong></p>
+          </div>
+          <div class="weather-art" id="weatherArt" aria-hidden="true">
+            <div class="sun-halo"></div><div class="sun"></div>
+            <div class="cloud cloud-back"></div><div class="cloud cloud-front"></div>
+          </div>
+        </div>
+        <div class="hero-bottom">
+          <span><span class="mini-sun">✦</span> Live conditions</span>
+          <span id="updatedAt">Updated just now</span>
+        </div>
+      </article>
+
+      <aside class="side-column">
+        <article class="highlight-card">
+          <div class="card-heading"><span>☼</span> TODAY'S HIGHLIGHT</div>
+          <p id="weatherTip">A new day, a new atmosphere.</p>
+          <div class="highlight-footer"><span>UV INDEX</span><strong id="uvIndex">--</strong></div>
+        </article>
+        <article class="mini-card">
+          <div class="mini-card-icon humidity-icon">◌</div>
+          <div><p>Humidity</p><strong id="humidity">--<small>%</small></strong></div>
+          <span class="mini-caption">MOISTURE</span>
+        </article>
+      </aside>
+    </section>
+
+    <section class="details-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE LITTLE DETAILS</p><h2>Weather at a glance</h2></div>
+        <span class="detail-date" id="detailDate">TODAY</span>
+      </div>
+      <div class="detail-grid">
+        <article class="detail-card"><div class="detail-icon wind-icon">≋</div><p>Wind speed</p><strong id="wind">-- <small>km/h</small></strong><span>OUTDOOR FEEL</span></article>
+        <article class="detail-card"><div class="detail-icon visibility-icon">◎</div><p>Visibility</p><strong id="visibility">-- <small>km</small></strong><span>HOW FAR YOU CAN SEE</span></article>
+        <article class="detail-card"><div class="detail-icon pressure-icon">◉</div><p>Pressure</p><strong id="pressure">-- <small>mb</small></strong><span>ATMOSPHERIC</span></article>
+        <article class="detail-card"><div class="detail-icon cloud-icon">☁</div><p>Cloud cover</p><strong id="cloud">-- <small>%</small></strong><span>SKY COVERAGE</span></article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="footer-brand">atmos<span>.</span></span>
+      <span>Made for curious minds <b>✦</b></span>
+      <span>Weather data by <a href="https://www.weatherapi.com/" target="_blank" rel="noreferrer">WeatherAPI.com</a></span>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
